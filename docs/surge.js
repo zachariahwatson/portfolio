@@ -20,6 +20,16 @@ S=Uint32Array.from([0,1,s=t=2,3].map(i=>parseInt(tokenData.hash.substr(i*8+2,8),
 //0x0dbdf0b652d472017daea611166d6160dacfecd5961c10bdc7ebe40e54520134
 
 
+
+//ccapture
+var capturer = new CCapture( { 
+    format: 'webm',
+    framerate: 12,
+    timeLimit: 30 } );
+
+
+
+
 let seed = parseInt(tokenData.hash.slice(0, 16), 16);
 let hashPairs = [];
     for (let j=0; j<32; j++){
@@ -102,17 +112,18 @@ function setup() {
         ["#D09CB9","#DB768F"], //Cherry Blossom
         ["#C94E26","#BFC9A0"], //Vintage
         //["#C81A58","#FFB0CD"], //Dragon Fruit
-        //["#FC0072","#068C8E"], //too bright maybe - pink orange turquiose
+        ["#FC0072","#068C8E"], //Hotline
         ["#FA4627","#9998BC"], //Hyper
         ["#ccd2e3","#43454a"], //Mono
         ["#7288B5","#E02A31"], //Mark 1
-        //["#7912E9","#C6117B"], //Vaporwave
-        //["#ffb01f","#2e2e2e"], //Yellowjacket **fix
-        ["#630012","#e80000"], //Anatomical **fix?
+        ["#7912E9","#C6117B"], //Vaporwave
+        //["#ffa20d","#27272e"], //Yellowjacket
+        //["#630012","#e80000"], //Anatomical **fix?
         ["#ffcb7d","#006fed"], //Sunset
         //["#88BDA9","#EE7E4E"], //idk sherbert purple teal
         ["#D1639C","#E9CB31"], //Vice
-        ["#f0d0c2","#184E84"] //Express
+        ["#f0d0c2","#184E84"], //Express
+        //["#d11919","#5c274e"] //Midnight
     ];
     color1 = palette[round(map(hashData[3], 0, 255, 0, palette.length-1))][0];
     color2 = palette[round(map(hashData[3], 0, 255, 0, palette.length-1))][1];
@@ -120,10 +131,11 @@ function setup() {
     //color2 = palette[0][1];
     //color1 = generateRandomColor();
     //color2 = generateRandomColor();
-    //color1 = "#7912E9";
-    //color2 = "#c72e87";
+    //color1 = "#FC0072";
+    //color2 = "#068C8E";
     invertedColor = hashData[4] > 128 ? true : false;
-    shapeMod = hashData[5] < 180 ? 1 : 1.5;
+    //shapeMod = hashData[5] < 180 ? 1.5 : .8;
+    shapeMod = 1.5;
     shapeSize = ((WIDTH-border)/gridSize);
     if (invertedColor) {
         c1 = color(color2);
@@ -267,7 +279,7 @@ function draw() {
 
 
     //stats
-    /*let fps = frameRate();
+    let fps = frameRate();
     fill(255);
     stroke(0);
     text("FPS: " + fps.toFixed(2), 10, height - 10);
@@ -287,7 +299,7 @@ function draw() {
     text("instability: " + instability,10,200);
     text("interference: " + interference,10,220);
     text("monotone: " + monotone,10,240);
-    text("blendmode: " + blendmode,10,260);*/
+    text("blendmode: " + blendmode,10,260);
 
     //ccapture
     /*if (frameCount = 1) {
