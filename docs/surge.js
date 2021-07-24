@@ -22,10 +22,10 @@ S=Uint32Array.from([0,1,s=t=2,3].map(i=>parseInt(tokenData.hash.substr(i*8+2,8),
 
 
 //ccapture
-var capturer = new CCapture( { 
+/*var capturer = new CCapture( { 
     format: 'webm',
     framerate: 12,
-    timeLimit: 30 } );
+    timeLimit: 30 } );*/
 
 
 
